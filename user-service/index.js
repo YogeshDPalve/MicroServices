@@ -2,13 +2,17 @@ import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 const app = express();
-const port = 3000;
+const port = 3001;
 
 app.use(bodyParser.json());
 app.use(express.json());
 
+// mongoose
+//   .connect("mongodb://localhost:27017/users")
+//   .then(() => console.log("connected to mongodb"))
+//   .catch((err) => console.error("mongodb connection error: ", err));
 mongoose
-  .connect("mongodb://localhost:27017/users")
+  .connect("mongodb://mongo:27017/users")
   .then(() => console.log("connected to mongodb"))
   .catch((err) => console.error("mongodb connection error: ", err));
 
@@ -38,6 +42,5 @@ app.get("/users", async (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Listening on http://localhost:${port}`);
+  console.log(`User service listening on http://localhost:${port}`);
 });
- 
